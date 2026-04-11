@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Canvas } from './components/canvas/canvas';
 
 @Component({
   selector: 'app-chip8',
-  imports: [],
+  standalone: true,
+  imports: [Canvas],
   templateUrl: './chip8.html',
   styleUrl: './chip8.css',
 })
