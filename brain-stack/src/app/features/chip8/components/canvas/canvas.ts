@@ -42,7 +42,6 @@ export class Canvas implements AfterViewInit {
 
   async start() {
     this.setupWasm();
-    await this.loadRom();
     this.loop();
   }
 
@@ -97,8 +96,22 @@ export class Canvas implements AfterViewInit {
 
   }
 
-  async loadRom() {
-    const res = await fetch('roms/IBMLogo.ch8');
+  // async loadRom() {
+  //   const res = await fetch('roms/Jumping X and O [Harry Kleinberg, 1977].ch8');
+  //   const buffer = await res.arrayBuffer();
+  //   const bytes = new Uint8Array(buffer);
+
+  //   const ptr = Module._malloc(bytes.length);
+  //   Module.HEAPU8.set(bytes, ptr);
+
+  //   const loadRom = Module.cwrap('chip8_load_rom', null, ['number', 'number']);
+  //   loadRom(ptr, bytes.length);
+
+  //   console.log("ROM size:", bytes.length);
+  // }
+
+  loadRomByName = async (romPath: string) => {
+    const res = await fetch(`roms/${romPath}`);
     const buffer = await res.arrayBuffer();
     const bytes = new Uint8Array(buffer);
 
@@ -107,7 +120,13 @@ export class Canvas implements AfterViewInit {
 
     const loadRom = Module.cwrap('chip8_load_rom', null, ['number', 'number']);
     loadRom(ptr, bytes.length);
-
-    console.log("ROM size:", bytes.length);
   }
+
+  restart = async (romPath: string) => {
+    const init = Module.cwrap('chip8_init', null, []);
+    init();
+
+    await this.loadRomByName(romPath);
+  }
+
 }

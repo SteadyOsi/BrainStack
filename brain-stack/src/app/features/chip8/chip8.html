@@ -6,13 +6,13 @@
         </div>
 
         <div class="controls">
-            <select>
-                <option>Select ROM</option>
-                <option>IBM</option>
-                <option>Tetris</option>
+            <select (change)="onRomChange($event)">
+                <option value="IBMLogo.ch8">IBM Logo</option>
+                <option value="Tetris [Fran Dachille, 1991].ch8">Tetris</option>
+                <option value="Keypad Test [Hap, 2006].ch8">Keypad Test</option>
             </select>
 
-            <button class="restartBtn">Restart</button>
+            <button class="restartBtn" (click)="onRestart()"> Restart </button>
         </div>
     </div>
 
