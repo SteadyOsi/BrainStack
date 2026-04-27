@@ -274,9 +274,6 @@ function assert(condition, text) {
 
 // We used to include malloc/free by default in the past. Show a helpful error in
 // builds with assertions.
-function _malloc() {
-  abort('malloc() called but not included in the build - add `_malloc` to EXPORTED_FUNCTIONS');
-}
 function _free() {
   // Show a helpful error since we used to include free by default in the past.
   abort('free() called but not included in the build - add `_free` to EXPORTED_FUNCTIONS');
@@ -469,7 +466,7 @@ function updateMemoryViews() {
   var b = wasmMemory.buffer;
   HEAP8 = new Int8Array(b);
   HEAP16 = new Int16Array(b);
-  HEAPU8 = new Uint8Array(b);
+  Module['HEAPU8'] = HEAPU8 = new Uint8Array(b);
   HEAPU16 = new Uint16Array(b);
   HEAP32 = new Int32Array(b);
   HEAPU32 = new Uint32Array(b);
@@ -3925,6 +3922,7 @@ var findStringEnd = (heapOrArray, idx, maxBytesToRead, ignoreNul) => {
       return (...args) => ccall(ident, returnType, argTypes, args, opts);
     };
 
+
   FS.createPreloadedFile = FS_createPreloadedFile;
   FS.preloadFile = FS_preloadFile;
   FS.staticInit();;
@@ -4157,7 +4155,6 @@ missingLibrarySymbols.forEach(missingLibrarySymbol)
   'INT53_MIN',
   'bigintToI53Checked',
   'HEAP8',
-  'HEAPU8',
   'HEAP16',
   'HEAPU16',
   'HEAP32',
@@ -4400,8 +4397,10 @@ var _chip8_update_timers = Module['_chip8_update_timers'] = makeInvalidEarlyAcce
 var _chip8_get_display = Module['_chip8_get_display'] = makeInvalidEarlyAccess('_chip8_get_display');
 var _chip8_set_key = Module['_chip8_set_key'] = makeInvalidEarlyAccess('_chip8_set_key');
 var _chip8_load_rom = Module['_chip8_load_rom'] = makeInvalidEarlyAccess('_chip8_load_rom');
+var _chip8_get_sound_timer = Module['_chip8_get_sound_timer'] = makeInvalidEarlyAccess('_chip8_get_sound_timer');
 var _fflush = makeInvalidEarlyAccess('_fflush');
 var _strerror = makeInvalidEarlyAccess('_strerror');
+var _malloc = Module['_malloc'] = makeInvalidEarlyAccess('_malloc');
 var _emscripten_stack_init = makeInvalidEarlyAccess('_emscripten_stack_init');
 var _emscripten_stack_get_free = makeInvalidEarlyAccess('_emscripten_stack_get_free');
 var _emscripten_stack_get_base = makeInvalidEarlyAccess('_emscripten_stack_get_base');
@@ -4420,8 +4419,10 @@ function assignWasmExports(wasmExports) {
   assert(typeof wasmExports['chip8_get_display'] != 'undefined', 'missing Wasm export: chip8_get_display');
   assert(typeof wasmExports['chip8_set_key'] != 'undefined', 'missing Wasm export: chip8_set_key');
   assert(typeof wasmExports['chip8_load_rom'] != 'undefined', 'missing Wasm export: chip8_load_rom');
+  assert(typeof wasmExports['chip8_get_sound_timer'] != 'undefined', 'missing Wasm export: chip8_get_sound_timer');
   assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
   assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
+  assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
   assert(typeof wasmExports['emscripten_stack_init'] != 'undefined', 'missing Wasm export: emscripten_stack_init');
   assert(typeof wasmExports['emscripten_stack_get_free'] != 'undefined', 'missing Wasm export: emscripten_stack_get_free');
   assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
@@ -4437,8 +4438,10 @@ function assignWasmExports(wasmExports) {
   _chip8_get_display = Module['_chip8_get_display'] = createExportWrapper('chip8_get_display', 0);
   _chip8_set_key = Module['_chip8_set_key'] = createExportWrapper('chip8_set_key', 2);
   _chip8_load_rom = Module['_chip8_load_rom'] = createExportWrapper('chip8_load_rom', 2);
+  _chip8_get_sound_timer = Module['_chip8_get_sound_timer'] = createExportWrapper('chip8_get_sound_timer', 0);
   _fflush = createExportWrapper('fflush', 1);
   _strerror = createExportWrapper('strerror', 1);
+  _malloc = Module['_malloc'] = createExportWrapper('malloc', 1);
   _emscripten_stack_init = wasmExports['emscripten_stack_init'];
   _emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'];
   _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];

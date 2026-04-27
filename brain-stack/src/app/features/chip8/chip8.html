@@ -10,9 +10,13 @@
                 <option value="IBMLogo.ch8">IBM Logo</option>
                 <option value="Tetris [Fran Dachille, 1991].ch8">Tetris</option>
                 <option value="Keypad Test [Hap, 2006].ch8">Keypad Test</option>
+                <option value="Jumping X and O [Harry Kleinberg, 1977].ch8">Jumping X and O</option>
+                <option value="Cave.ch8">Cave</option>
             </select>
 
             <button class="restartBtn" (click)="onRestart()"> Restart </button>
+
+            <button class="togglePause" (click)="togglePause()">{{isPaused ? 'Play' : 'Pause'}}</button>
         </div>
     </div>
 

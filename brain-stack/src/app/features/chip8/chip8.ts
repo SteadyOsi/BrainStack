@@ -14,6 +14,7 @@ export class Chip8 {
   @ViewChild(Canvas) canvas!: Canvas;
 
   selectedRom = 'IBMLogo.ch8'
+  isPaused = false;
 
   onRomChange(event: Event) {
     const select = event.target as HTMLSelectElement;
@@ -23,6 +24,19 @@ export class Chip8 {
   }
 
   onRestart() {
+    this.canvas.initAudio();
     this.canvas.restart(this.selectedRom);
+  }
+
+  togglePause() {
+    this.canvas.initAudio();
+
+    if(this.isPaused){
+      this.canvas.startLoop();
+    } else {
+      this.canvas.pause();
+    }
+
+    this.isPaused = !this.isPaused;
   }
 }
