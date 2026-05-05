@@ -14,11 +14,10 @@
                 <option value="Cave.ch8">Cave</option>
                 <option value="Pong [Paul Vervalin, 1990].ch8">Pong</option>
             </select>
-
-            <button class="restartBtn" (click)="onRestart()"> Restart </button>
-
-            <button class="togglePause" (click)="togglePause()">{{isPaused ? 'Play' : 'Pause'}}</button>
+            <div class="JustButtons">
+                <button class="restartBtn" (click)="onRestart()"> Restart </button>
+                <button class="togglePause" (click)="togglePause()">{{isPaused ? 'Play' : 'Pause'}}</button>
+            </div>
         </div>
     </div>
-
 </div> 

@@ -1,11 +1,16 @@
 .chip8-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
 
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgb(59, 61, 61);
+
+  max-width: 640px;
   width: 100%;
-  height: 90vh;
 }
 
 .canvas-controls {
@@ -18,8 +23,8 @@
 
 .canvas-wrapper {
   width: 100%;
-  height: 320px;
-  width: 640px;
+  max-width: 640px;
+  aspect-ratio: 64 / 32;
 
   background: #0f0f0f;
   border-radius: 8px;
@@ -31,7 +36,17 @@
 
 .controls {
   display: flex;
-  gap: 12px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.JustButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .restartBtn, .togglePause {
