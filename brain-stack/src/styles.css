@@ -3,4 +3,10 @@ body {
     font-family: sans-serif;
     background-color: #202020;
     color: #f8f8f8;
+
+    background-color: #202020;
+
+    background-image:  radial-gradient(#444444 2px, transparent 2px), radial-gradient(#444444 2px, #202020 2px);
+    background-size: 80px 80px;
+    background-position: 0 0,40px 40px;
 }

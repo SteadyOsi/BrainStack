@@ -1,10 +1,12 @@
 .app-layout {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
-  display: grid;
-  place-items: start center; /* centers everything cleanly */
+    display: grid;
+    place-items: start center; /* centers everything cleanly */
+
+    padding-top: 14%;
+    padding-bottom: 300px;
 }
