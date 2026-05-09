@@ -6,5 +6,5 @@
 
 .content {
   display: grid;
-  place-items: center; /* centers everything cleanly */
+  place-items: start center; /* centers everything cleanly */
 }
