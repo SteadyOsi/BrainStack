@@ -1,0 +1,32 @@
+.page-content {
+    background-color: #3b3d3d;
+    width: 680px;
+    min-height: 500px;
+
+    margin-top: 150px;
+    margin-bottom: 300px;
+    padding: 0px 30px;
+
+    border: solid 1px #4d5151;
+    border-radius: 17px;
+
+
+}
+
+.hero-section,
+.info-section {
+  margin-bottom: 64px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.7;
+  color: #d0d0d0;
+}

@@ -7,6 +7,6 @@
     display: grid;
     place-items: start center; /* centers everything cleanly */
 
-    padding-top: 14%;
-    padding-bottom: 300px;
+    /* padding-top: 14%; */
+    /* padding-bottom: 100px; */
 }
