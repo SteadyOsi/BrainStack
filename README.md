@@ -153,7 +153,6 @@ The repository may contain:
 
 * Hardware emulation tooling
 * Interactive visualisation systems
-* Robotics and hardware integrations
 * Full stack architecture
 * Performance-focused tooling
 * Advanced TypeScript architecture
@@ -164,15 +163,7 @@ The repository may contain:
 
 The name reflects the idea of stacking knowledge across multiple domains:
 
-* Frontend
-* Backend
-* Systems programming
-* Hardware
-* Tooling
-* UX/UI
-* Automation
-
-The project is intended to become a central place for combining all of those skills together.
+A working title influenced from Organic and digital concepts combined.
 
 ---
 
