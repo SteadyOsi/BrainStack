@@ -50,7 +50,6 @@ Future additions may include:
 * Backend services
 * Databases
 * Hardware integrations
-* Robotics-related tooling
 
 ---
 
