@@ -14,7 +14,7 @@
   border-radius: 15px;
   background-color: #3b3d3d;
 
-  width: 680px;
+  max-width: 680px;
   width: 100%;
 
   box-sizing: border-box;
@@ -100,4 +100,22 @@ select {
 
   border: 1px solid #449920;
   border-radius: 6px;
+}
+
+.chip8-container {
+  margin-bottom: 10px;
+}
+
+.howTo {
+  background-color: #2e3030;
+
+  border: 2px dashed #5dd62c;
+  border-radius: 15px;
+
+  padding: 20px;
+
+  max-width: 680px;
+  width: 100%;
+
+  box-sizing: border-box;
 }
